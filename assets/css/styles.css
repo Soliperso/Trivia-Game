@@ -1,0 +1,162 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-weight: 100;
+    font-family: 'Ubuntu', sans-serif;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, rgba(0, 0, 255, .9), rgba(0, 0, 255, .2)), url('../images/bgImage.jpg') no-repeat;
+    overflow: hidden;
+}
+
+
+.jumbotron {
+    padding-top: 5px;
+    color: #c3c3c3;
+    background-color: rgba(44, 54, 196, 0.336);
+    padding-bottom: 110px;
+
+}
+
+.jumbotron h2 {
+    text-shadow: 1px 1px #000;
+    margin-bottom: 30px;
+    font-family: 'Lato', sans-serif;
+    ;
+}
+
+.main {
+    padding: 0;
+}
+
+.quote {
+    margin: 30px;
+    padding-bottom: 25px;
+}
+
+#demo {
+    padding-top: 60px;
+    font-size: 2rem;
+    padding-left: 90px;
+}
+
+
+.displayBoard {
+    margin-top: 30px;
+    width: 800px;
+    text-align: center;
+    color: #fff;
+    background-color: rgba(44, 54, 196, 0.336);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.displayBoard h2 {
+    font-size: 1.9rem;
+    padding: 20px 0 20px;
+}
+
+
+.displayBoard .thisChoice:hover {
+    background-color: rgb(42, 42, 224);
+    padding: 20px 0 20px;
+}
+
+#startBtn {
+    border: 1px solid #c3c3c3;
+    text-shadow: 1px 1px solid #000;
+    padding: 10px;
+    font-size: 30px;
+    width: 200px;
+    color: #c3c3c3;
+    background-color: rgba(44, 54, 196, 0.336);
+    margin-top: 15%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 200px;
+}
+
+img {
+    width: 400px;
+    height: 250px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px #c3c3c3;
+}
+
+#startOverBtn.reset {
+    border: 1px solid #fff;
+    width: 137px;
+    display: block;
+    margin: 47px auto;
+    padding: 10px;
+}
+
+#finalMessage {
+    margin-bottom: 20px;
+    /* border-bottom: 1px solid #fff; */
+    padding-bottom: 29px;
+    font-size: 2rem;
+    width: 323px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+@media screen and (max-width: 900px) {
+
+    .jumbotron,
+    .displayBoard,
+    .quote {
+        padding: 0;
+    }
+
+    img {
+        width: 300px;
+        height: 200px;
+    }
+
+    body {
+        min-height: 100vh;
+    }
+
+    h5#demo {
+        display: none;
+    }
+
+}
+
+@media screen and (max-widh: 768px) {
+    .displayBoard {
+        width: 750px;
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .jumbotron {
+        background-color: transparent;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .quote {
+        display: none;
+    }
+
+    body {
+        overflow: hidden;
+    }
+
+    .displayBoard {
+        width: 500px;
+    }
+
+    img {
+        width: 400px;
+    }
+
+}
