@@ -1,0 +1,11 @@
+# Netlify configuration — static site, no build step.
+# Publishes the repository root as-is.
+[build]
+  publish = "."
+  command = ""
+
+# Long-cache the immutable-ish assets; HTML stays fresh.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
