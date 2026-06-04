@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- A single 5-point star, reused across the field -->
+    <path id="star" d="M0,-10 L2.94,-4.05 L9.51,-3.09 L4.76,1.55 L5.88,8.09 L0,5 L-5.88,8.09 L-4.76,1.55 L-9.51,-3.09 L-2.94,-4.05 Z" fill="#ffffff"/>
+    <linearGradient id="stripes" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b22234" stop-opacity="0"/>
+      <stop offset="1" stop-color="#b22234" stop-opacity="0.16"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- faint red wash toward the bottom (flag-inspired) -->
+  <rect x="0" y="450" width="1600" height="450" fill="url(#stripes)"/>
+
+  <!-- scattered star field — visible but still subtle -->
+  <g opacity="0.32" filter="url(#glow)">
+    <use href="#star" transform="translate(140,120) scale(1.6)"/>
+    <use href="#star" transform="translate(320,260) scale(1.0)"/>
+    <use href="#star" transform="translate(500,90)  scale(1.3)"/>
+    <use href="#star" transform="translate(700,220) scale(0.8)"/>
+    <use href="#star" transform="translate(900,120) scale(1.5)"/>
+    <use href="#star" transform="translate(1120,250) scale(1.0)"/>
+    <use href="#star" transform="translate(1320,110) scale(1.2)"/>
+    <use href="#star" transform="translate(1480,300) scale(0.9)"/>
+    <use href="#star" transform="translate(220,470) scale(1.1)"/>
+    <use href="#star" transform="translate(430,560) scale(0.8)"/>
+    <use href="#star" transform="translate(640,440) scale(1.4)"/>
+    <use href="#star" transform="translate(860,560) scale(1.0)"/>
+    <use href="#star" transform="translate(1060,470) scale(1.2)"/>
+    <use href="#star" transform="translate(1260,580) scale(0.9)"/>
+    <use href="#star" transform="translate(1460,520) scale(1.3)"/>
+    <use href="#star" transform="translate(120,720) scale(1.0)"/>
+    <use href="#star" transform="translate(360,800) scale(1.2)"/>
+    <use href="#star" transform="translate(600,740) scale(0.8)"/>
+    <use href="#star" transform="translate(820,820) scale(1.1)"/>
+    <use href="#star" transform="translate(1040,760) scale(1.4)"/>
+    <use href="#star" transform="translate(1260,820) scale(0.9)"/>
+    <use href="#star" transform="translate(1480,740) scale(1.2)"/>
+  </g>
+</svg>

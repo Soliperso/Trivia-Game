@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="U.S. Citizenship Civics Test 2026 — practice the official USCIS naturalization questions in a fast, multiple-choice quiz.">
+  <title>U.S. Citizenship Civics Test 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lora:ital@0;1&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">🇺🇸</span>
+      <span class="brand-name">Citizenship Civics 2026</span>
+    </div>
+    <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle light / dark theme"
+      title="Toggle theme">
+      <span class="theme-icon" aria-hidden="true">🌙</span>
+    </button>
+  </header>
+
+  <main class="stage">
+
+    <!-- ============================ HOME ============================ -->
+    <section id="screen-home" class="screen is-active" aria-labelledby="home-title">
+      <div class="card hero">
+        <p class="eyebrow">USCIS Naturalization</p>
+        <h1 id="home-title" class="hero-title">U.S. Citizenship Civics Test</h1>
+        <p id="typewriter" class="hero-tag" aria-live="polite"></p>
+        <blockquote class="quote">
+          <em>“We the People of the United States, in Order to form a more perfect Union,
+            establish Justice, … and secure the Blessings of Liberty to ourselves and our
+            Posterity …”</em>
+          <cite>— Preamble, U.S. Constitution</cite>
+        </blockquote>
+
+        <div class="best-banner" id="homeBest" hidden>
+          <span class="best-banner-label">Personal best</span>
+          <span class="best-banner-score" id="homeBestScore">0</span>
+        </div>
+
+        <div class="hero-actions">
+          <button id="startBtn" class="btn btn-primary btn-lg" type="button">Start Quiz</button>
+          <button id="settingsBtn" class="btn btn-ghost" type="button">Settings</button>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="hero-stat-num" id="statQuestions">66</span><span class="hero-stat-lbl">Questions</span></div>
+          <div class="hero-stat"><span class="hero-stat-num">3</span><span class="hero-stat-lbl">Topics</span></div>
+          <div class="hero-stat"><span class="hero-stat-num">60%</span><span class="hero-stat-lbl">To pass</span></div>
+        </div>
+        <p class="hero-hint">Tip: press <kbd>1</kbd>–<kbd>4</kbd> (or <kbd>A</kbd>–<kbd>D</kbd>) to answer.</p>
+      </div>
+    </section>
+
+    <!-- ========================== SETTINGS ========================== -->
+    <section id="screen-settings" class="screen" aria-labelledby="settings-title">
+      <div class="card">
+        <h2 id="settings-title" class="card-title">Settings</h2>
+
+        <div class="field">
+          <label for="setCategory">Topic</label>
+          <select id="setCategory">
+            <option value="all">All topics</option>
+            <option value="American Government">American Government</option>
+            <option value="American History">American History</option>
+            <option value="Integrated Civics">Integrated Civics (geography, symbols, holidays)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="setDifficulty">Difficulty</label>
+          <select id="setDifficulty">
+            <option value="all">Any</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="setCount">Number of questions: <strong id="setCountVal">10</strong></label>
+          <input id="setCount" type="range" min="5" max="20" step="1" value="10">
+        </div>
+
+        <div class="field">
+          <label for="setTimer">Seconds per question: <strong id="setTimerVal">15</strong></label>
+          <input id="setTimer" type="range" min="5" max="30" step="5" value="15">
+        </div>
+
+        <div class="field field-row">
+          <label for="setShuffle">Shuffle questions &amp; answers</label>
+          <label class="switch">
+            <input id="setShuffle" type="checkbox" checked>
+            <span class="switch-track" aria-hidden="true"></span>
+          </label>
+        </div>
+
+        <p class="field-note" id="poolNote"></p>
+
+        <div class="card-actions">
+          <button id="settingsBackBtn" class="btn btn-ghost" type="button">Back</button>
+          <button id="settingsStartBtn" class="btn btn-primary" type="button">Start with these</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== QUIZ ============================= -->
+    <section id="screen-quiz" class="screen" aria-labelledby="quiz-question">
+      <div class="card quiz-card">
+        <div class="quiz-head">
+          <span class="pill" id="questionCounter">Question 1 / 10</span>
+          <div class="quiz-stats">
+            <span class="pill pill-score">Score <strong id="liveScore">0</strong></span>
+            <span class="pill pill-streak" id="streakPill" hidden>🔥 <strong id="streakCount">0</strong></span>
+          </div>
+        </div>
+
+        <div class="progress" aria-hidden="true">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="timer">
+          <div class="timer-bar" id="timerBar"></div>
+          <span class="timer-text" id="timerText" aria-live="off">15s</span>
+        </div>
+
+        <p class="q-topic" id="qTopic"></p>
+        <h2 class="question-text" id="quiz-question">Question goes here</h2>
+
+        <div class="answers" id="answers" role="group" aria-label="Answer choices"></div>
+
+        <div class="feedback" id="feedback" aria-live="polite" hidden>
+          <div class="feedback-emblem" id="feedbackEmblem" aria-hidden="true"></div>
+          <p class="feedback-msg" id="feedbackMsg"></p>
+          <p class="feedback-correct" id="feedbackCorrect"></p>
+          <p class="feedback-region" id="feedbackRegion"></p>
+          <button id="nextBtn" class="btn btn-primary" type="button">Next →</button>
+        </div>
+
+        <button id="quitBtn" class="btn btn-link quit-btn" type="button">Quit</button>
+      </div>
+    </section>
+
+    <!-- ========================== RESULTS ========================== -->
+    <section id="screen-results" class="screen" aria-labelledby="results-title">
+      <div class="card results-card">
+        <div class="badge-newbest" id="newBestBadge" hidden>🏆 New personal best!</div>
+        <div class="verdict" id="verdict"></div>
+        <p class="rank-line" id="rankLine"></p>
+        <h2 id="results-title" class="card-title">Your Results</h2>
+
+        <div class="score-ring" id="scoreRing">
+          <svg class="ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+            <defs>
+              <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--accent-2)"></stop>
+                <stop offset="1" stop-color="var(--accent)"></stop>
+              </linearGradient>
+            </defs>
+            <circle class="ring-track" cx="60" cy="60" r="54"></circle>
+            <circle class="ring-progress" id="ringProgress" cx="60" cy="60" r="54"></circle>
+          </svg>
+          <div class="score-ring-center">
+            <span class="score-ring-value" id="finalScore">0</span>
+            <span class="score-ring-label">points</span>
+          </div>
+        </div>
+
+        <p class="accuracy" id="accuracyLine">You scored 0% accuracy.</p>
+
+        <div class="result-grid">
+          <div class="result-stat stat-correct">
+            <span class="result-num" id="statCorrect">0</span>
+            <span class="result-lbl">Correct</span>
+          </div>
+          <div class="result-stat stat-incorrect">
+            <span class="result-num" id="statIncorrect">0</span>
+            <span class="result-lbl">Incorrect</span>
+          </div>
+          <div class="result-stat stat-unanswered">
+            <span class="result-num" id="statUnanswered">0</span>
+            <span class="result-lbl">Unanswered</span>
+          </div>
+        </div>
+
+        <p class="best-line" id="bestLine"></p>
+
+        <div class="card-actions">
+          <button id="reviewBtn" class="btn btn-ghost" type="button">Review answers</button>
+          <button id="playAgainBtn" class="btn btn-primary" type="button">Play again</button>
+        </div>
+        <button id="homeBtn" class="btn btn-link" type="button">Back to home</button>
+      </div>
+    </section>
+
+    <!-- ========================== REVIEW =========================== -->
+    <section id="screen-review" class="screen" aria-labelledby="review-title">
+      <div class="card review-card">
+        <h2 id="review-title" class="card-title">Answer Review</h2>
+        <ol class="review-list" id="reviewList"></ol>
+        <div class="card-actions">
+          <button id="reviewBackBtn" class="btn btn-ghost" type="button">Back to results</button>
+          <button id="reviewPlayBtn" class="btn btn-primary" type="button">Play again</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="sitefoot">
+    <p>Practice for the USCIS naturalization civics test · multiple-choice study tool · not affiliated with USCIS.</p>
+  </footer>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <script src="assets/javascript/questions.js"></script>
+  <script src="assets/javascript/app.js"></script>
+</body>
+
+</html>
